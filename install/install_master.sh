@@ -65,7 +65,8 @@ sudo cp -i /etc/kubernetes/admin.conf ~/.kube/config
 sudo cp ~/.kube/config ~ubuntu/kubeconfig 
 sudo chown ubuntu:ubuntu ~ubuntu/kubeconfig
 
-KUBECTL_ENCODING=$(kubectl version | base64 | tr -d '\n')
+KUBECTL_ENCODING=$(/usr/bin/kubectl version | /usr/bin/base64 | /usr/bin/tr -d '\n')
+echo "KUBECTL_ENCODING=$KUBECTL_ENCODING" > kubectl_ver
 /usr/bin/kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=${KUBECTL_ENCODING}"
 
 echo
