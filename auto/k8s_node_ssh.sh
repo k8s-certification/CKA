@@ -20,11 +20,10 @@ su - ubuntu -c  "cat id_rsa.pub >> ~/.ssh/authorized_keys"
 
 #install k8s-cluster
 if [[ `hostname` == *"master"* ]]; then
-  /bin/bash <(curl -s  https://raw.githubusercontent.com/killer-sh/cks-course-environment/master/cluster-setup/latest/install_master.sh)
-  cp ~/.kube/config ~ubuntu/kubeconfig && chown ubuntu:ubuntu ~ubuntu/kubeconfig
+  /bin/bash <(curl -s  https://raw.githubusercontent.com/k8s-certification/CKA/main/install/install_master.sh)
 
 else
-  /bin/bash <(curl -s  https://raw.githubusercontent.com/killer-sh/cks-course-environment/master/cluster-setup/latest/install_worker.sh)
-  touch ~/end_worker.txt && cp ~/end_worker.txt ~ubuntu/end_worker.txt && chown ubuntu:ubuntu ~ubuntu/end_worker.txt
+  /bin/bash <(curl -s  https://raw.githubusercontent.com/k8s-certification/CKA/main/install/install_worker.sh)
 
 fi
+
