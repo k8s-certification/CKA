@@ -65,6 +65,6 @@ echo "EXECUTE ON MASTER: kubeadm token create --print-join-command --ttl 0"
 echo "THEN RUN THE OUTPUT AS COMMAND HERE TO ADD AS WORKER"
 echo
 
-touch ~/end_worker.txt && cp ~/end_worker.txt ~ubuntu/end_worker.txt
+echo "END TIME : $(date)" > ~/end_worker.txt && cp ~/end_worker.txt ~ubuntu/end_worker.txt
 sudo chown ubuntu:ubuntu ~ubuntu/end_worker.txt
 
