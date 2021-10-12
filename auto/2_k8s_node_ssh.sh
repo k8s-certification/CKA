@@ -1,9 +1,9 @@
-#!/bin/bash 
+#!/bin/bash
 # modify CONSOLE_IP if console vm's IP is not following IP (10.128.0.2)
 # CONSOLE_IP=10.128.0.2
 
 VM_HOSTNAME=vm_hostname
-CONSOLE_HOST_PREFIX="kk-"
+CONSOLE_HOST_PREFIX=""
 CONSOLE_HOST=cka-console
 CONSOLE_HOSTNAME="$CONSOLE_HOST_PREFIX$CONSOLE_HOST"
 #echo $CONSOLE_HOSTNAME
