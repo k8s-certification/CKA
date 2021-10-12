@@ -2,7 +2,7 @@
 mkdir .kube
 
 # download each kubeconfig file with scp
-HOST_PREFIX="kk-"
+HOST_PREFIX=""
 FIRST_CLUSTER_MASTER="${HOST_PREFIX}k8s-master"
 FIRST_CLUSTER_WORKER1="${HOST_PREFIX}k8s-worker1"
 SECOND_CLUSTER_MASTER="${HOST_PREFIX}hk8s-master"
