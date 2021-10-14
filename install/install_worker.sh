@@ -16,7 +16,7 @@ echo 'complete -F __start_kubectl k' >> ~/.bashrc
 sed -i '1s/^/force_color_prompt=yes\n/' ~/.bashrc
 
 ### disable linux swap and remove any existing swap partitions
-swapoff -a 
+swapoff -a
 sed -i '/ swap / s/^\(.*\)$/#\1/g' /etc/fstab
 
 ### install k8s and docker
