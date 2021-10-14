@@ -16,7 +16,7 @@ echo 'complete -F __start_kubectl k' >> ~/.bashrc
 sed -i '1s/^/force_color_prompt=yes\n/' ~/.bashrc
 
 ### disable linux swap and remove any existing swap partitions
-swapoff -a 
+swapoff -a
 sed -i '/ swap / s/^\(.*\)$/#\1/g' /etc/fstab
 
 ### install k8s and docker
@@ -62,8 +62,11 @@ kubeadm init --kubernetes-version=${KUBE_VERSION} --ignore-preflight-errors=NumC
 
 mkdir -p ~/.kube
 sudo cp -i /etc/kubernetes/admin.conf ~/.kube/config
-sudo cp ~/.kube/config ~ubuntu/kubeconfig 
+sudo cp ~/.kube/config ~ubuntu/kubeconfig
 sudo chown ubuntu:ubuntu ~ubuntu/kubeconfig
+
+sudo cp -R ~root/.kube ~ubuntu
+sudo chown -R ubuntu:ubuntu ~ubuntu/.kube
 
 KUBECTL_ENCODING=$(/usr/bin/kubectl version | /usr/bin/base64 | /usr/bin/tr -d '\n')
 echo "KUBECTL_ENCODING=$KUBECTL_ENCODING" > ~/kubectl_ver

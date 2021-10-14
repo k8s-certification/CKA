@@ -1,4 +1,4 @@
-#!/bin/bash 
+#!/bin/bash
 mkdir .kube
 
 # download each kubeconfig file with scp
@@ -9,10 +9,10 @@ SECOND_CLUSTER_MASTER="${HOST_PREFIX}hk8s-master"
 SECOND_CLUSTER_WORKER1="${HOST_PREFIX}hk8s-worker1"
 
 # cluster join
-ssh ${FIRST_CLUSTER_MASTER} "sudo -i cat ~root/join_token"  > k8s-master-join
-ssh ${FIRST_CLUSTER_WORKER1} "sudo -i $( cat ./k8s-master-join)"
-ssh ${SECOND_CLUSTER_MASTER} "sudo -i cat ~root/join_token"  > hk8s-master-join
-ssh ${SECOND_CLUSTER_WORKER1} "sudo -i $( cat ./hk8s-master-join)"
+ssh ${FIRST_CLUSTER_MASTER} "sudo cat ~root/join_token"  > k8s-master-join
+ssh ${FIRST_CLUSTER_WORKER1} "sudo $( cat ./k8s-master-join)"
+ssh ${SECOND_CLUSTER_MASTER} "sudo cat ~root/join_token"  > hk8s-master-join
+ssh ${SECOND_CLUSTER_WORKER1} "sudo $( cat ./hk8s-master-join)"
 
 
 scp ${FIRST_CLUSTER_MASTER}:~/kubeconfig ~/.kube/config1
@@ -26,10 +26,10 @@ cat config2 | yq e '.users[0].user.client-certificate-data' - | base64 -d > admi
 cat config2 | yq e '.users[0].user.client-key-data' - | base64 -d > admin.key
 
 
-# add 2'nd cluster info first cluster config 파일(config1) 
+# add 2'nd cluster info first cluster config 파일(config1)
 # set 2'nd cluster address and ca file
 echo "set 2'nd cluster address and ca file to first cluster kubeconfig file"
-kubectl config --embed-certs=true --kubeconfig=config1 set-cluster hk8s-cluster --server=https://${SECOND_CLUSTER_MASTER}:6443 --certificate-authority=./ca.crt 
+kubectl config --embed-certs=true --kubeconfig=config1 set-cluster hk8s-cluster --server=https://${SECOND_CLUSTER_MASTER}:6443 --certificate-authority=./ca.crt
 
 # add 2'nd user to first cluster kubeconfig file"
 echo "add 2'nd user to first cluster kubeconfig file"
