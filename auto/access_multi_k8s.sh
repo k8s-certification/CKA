@@ -9,10 +9,10 @@ SECOND_CLUSTER_MASTER="${HOST_PREFIX}hk8s-master"
 SECOND_CLUSTER_WORKER1="${HOST_PREFIX}hk8s-worker1"
 
 # cluster join
-ssh ${FIRST_CLUSTER_MASTER} "sudo -i cat ~root/join_token"  > k8s-master-join
-ssh ${FIRST_CLUSTER_WORKER1} "sudo -i $( cat ./k8s-master-join)"
-ssh ${SECOND_CLUSTER_MASTER} "sudo -i cat ~root/join_token"  > hk8s-master-join
-ssh ${SECOND_CLUSTER_WORKER1} "sudo -i $( cat ./hk8s-master-join)"
+ssh ${FIRST_CLUSTER_MASTER} "sudo  cat ~root/join_token"  > k8s-master-join
+ssh ${FIRST_CLUSTER_WORKER1} "sudo  $( cat ./k8s-master-join)"
+ssh ${SECOND_CLUSTER_MASTER} "sudo  cat ~root/join_token"  > hk8s-master-join
+ssh ${SECOND_CLUSTER_WORKER1} "sudo  $( cat ./hk8s-master-join)"
 
 
 scp ${FIRST_CLUSTER_MASTER}:~/kubeconfig ~/.kube/config1
