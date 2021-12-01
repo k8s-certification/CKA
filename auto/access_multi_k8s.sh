@@ -32,7 +32,7 @@ echo "set First cluster address and ca file to first cluster kubeconfig file"
 kubectl config --embed-certs=true --kubeconfig=config set-cluster k8s-cluster --server=https://${SECOND_CLUSTER_MASTER}:6443 --certificate-authority=./ca1.crt
 
 echo "add First user to first cluster kubeconfig file"
-kubectl config --embed-certs=true --kubeconfig=config set-credentials k8s-admin --client-certificate=./admin2.pub --client-key=./admin1.key
+kubectl config --embed-certs=true --kubeconfig=config set-credentials k8s-admin --client-certificate=./admin1.pub --client-key=./admin1.key
 
 echo "set First context to first cluster kubeconfig file"
 kubectl config --kubeconfig=config set-context k8s --cluster=k8s-cluster --user=k8s-admin
