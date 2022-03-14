@@ -29,7 +29,7 @@ cat config1 | yq e '.users[0].user.client-key-data' - | base64 -d > admin1.key
 
 
 echo "set First cluster address and ca file to first cluster kubeconfig file"
-kubectl config --embed-certs=true --kubeconfig=config set-cluster k8s-cluster --server=https://${SECOND_CLUSTER_MASTER}:6443 --certificate-authority=./ca1.crt
+kubectl config --embed-certs=true --kubeconfig=config set-cluster k8s-cluster --server=https://${FIRST_CLUSTER_MASTER}:6443 --certificate-authority=./ca1.crt
 
 echo "add First user to first cluster kubeconfig file"
 kubectl config --embed-certs=true --kubeconfig=config set-credentials k8s-admin --client-certificate=./admin1.pub --client-key=./admin1.key
