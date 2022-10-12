@@ -69,9 +69,8 @@ sudo chown ubuntu:ubuntu ~ubuntu/kubeconfig
 sudo cp -R ~root/.kube ~ubuntu
 sudo chown -R ubuntu:ubuntu ~ubuntu/.kube
 
-KUBECTL_ENCODING=$(/usr/bin/kubectl version | /usr/bin/base64 | /usr/bin/tr -d '\n')
-echo "KUBECTL_ENCODING=$KUBECTL_ENCODING" > ~/kubectl_ver
-sudo /usr/bin/kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=${KUBECTL_ENCODING}"
+sudo /usr/bin/kubectl apply -f https://raw.githubusercontent.com/killer-sh/cks-course-environment/master/cluster-setup/calico.yaml
+
 
 echo
 echo "### COMMAND TO ADD A WORKER NODE ###"
