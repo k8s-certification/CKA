@@ -20,10 +20,10 @@ su - ubuntu -c  "cat id_rsa.pub >> ~/.ssh/authorized_keys"
 
 #install k8s-cluster
 if [[ `hostname` == *"master"* ]]; then
-  /bin/bash <(curl -s  https://raw.githubusercontent.com/k8s-certification/CKA/main/install/install_master.sh)
+  /bin/bash <(curl -s  https://raw.githubusercontent.com/k8s-certification/CKA/v1.24/install/install_master.sh)
 
 else
-  /bin/bash <(curl -s  https://raw.githubusercontent.com/k8s-certification/CKA/main/install/install_worker.sh)
+  /bin/bash <(curl -s  https://raw.githubusercontent.com/k8s-certification/CKA/v1.24/install/install_worker.sh)
 
 fi
 
