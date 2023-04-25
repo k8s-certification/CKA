@@ -6,6 +6,8 @@
 set -e
 
 source /etc/lsb-release
+VERSION_ID=20.04
+
 if [ "$DISTRIB_RELEASE" != "20.04" ]; then
     echo "################################# "
     echo "############ WARNING ############ "
