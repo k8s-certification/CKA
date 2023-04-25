@@ -1,6 +1,7 @@
 #!/bin/sh
 
 # Source: http://kubernetes.io/docs/getting-started-guides/kubeadm
+# source : https://raw.githubusercontent.com/killer-sh/cks-course-environment/master/cluster-setup/latest/install_master.sh
 
 set -e
 
