@@ -16,6 +16,7 @@ if [ "$DISTRIB_RELEASE" != "20.04" ]; then
     echo "Better ABORT with Ctrl+C. Or press any key to continue the install"
     read
 fi
+VERSION_ID=20.04
 
 KUBE_VERSION=1.24.3
 
